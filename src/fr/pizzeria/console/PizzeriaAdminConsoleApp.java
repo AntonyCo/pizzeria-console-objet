@@ -3,12 +3,15 @@ package fr.pizzeria.console;
 import java.util.Scanner;
 
 import fr.pizzeria.model.Pizza;
+import sun.reflect.generics.scope.DummyScope;
 
 public class PizzeriaAdminConsoleApp {
 	public static void main(String[] args){
 		int choiceNumber = 0;
 		Scanner questionUser = new Scanner(System.in);
 		Pizza[] pizzaArray = new Pizza[8];
+		String code, wording;
+		double price;
 		
 		//Add basics pizzas to array
 		pizzaArray[0] = new Pizza("PEP", "Pépéroni", 12.50);
@@ -35,16 +38,11 @@ public class PizzeriaAdminConsoleApp {
 				//Case 1: Display all pizzas
 				case 1:
 					System.out.println("Pizzas");
-					for(int i=0; i<pizzaArray.length; i++){
-						System.out.println(pizzaArray[i].code+" -> "+pizzaArray[i].wording+" ("+pizzaArray[i].price+" €)");
-					}
-					System.out.println();
+					displayArray(pizzaArray);
 					break;
 				//Case 2: Add a new pizza by code, wording and price
 				case 2:
 					System.out.println("Add a new pizza");	
-					String code, wording;
-					double price;
 					
 					//Retrieve informations from user
 					System.out.println("Please enter the code :");
@@ -55,25 +53,52 @@ public class PizzeriaAdminConsoleApp {
 					price = questionUser.nextDouble();
 					//Create the new pizza by informations
 					Pizza newPizza = new Pizza(code, wording, price);
-					Pizza[] tempPizzaArray = new Pizza[pizzaArray.length+1];
-					//Copy old array to the new array
-					for(int i=0; i<pizzaArray.length; i++){
-						tempPizzaArray[i] = pizzaArray[i];
-					}
-					//Add the new pizza to the last position
-					tempPizzaArray[tempPizzaArray.length-1] = newPizza;
-					
-					pizzaArray = tempPizzaArray;
+					pizzaArray = addPizzaToArray(pizzaArray, newPizza);
 					break;
 				case 3:
 					System.out.println("Update a pizza");
 					break;
 				case 4:
 					System.out.println("Delete a pizza");
+					displayArray(pizzaArray);
+					System.out.println("Please enter pizza code to delete :");
+					code = questionUser.next();
+					//Create a temporary array with size 0.
+					Pizza[] tempPizzaArray = new Pizza[0];
+					System.out.println("DEBUG "+tempPizzaArray.length);
+					for(int i=0; i<pizzaArray.length; i++){
+						//If it's not the pizza to delete, add the pizza to temporary array
+						if(!code.equals(pizzaArray[i].code)){
+							tempPizzaArray = addPizzaToArray(tempPizzaArray, pizzaArray[i]);
+						}
+					}
+					//Pizza array take value from temporary array
+					pizzaArray = tempPizzaArray;
+					System.out.println("DEBUG1 "+pizzaArray.length);
+					break;
 				case 99:
 					System.out.println("Bye ☹ ");
 					break;
 			}
 		}
+	}
+	
+	public static void displayArray(Pizza[] pizzaArray){
+		for(int i=0; i<pizzaArray.length; i++){
+			System.out.println(pizzaArray[i].code+" -> "+pizzaArray[i].wording+" ("+pizzaArray[i].price+" €)");
+		}
+		System.out.println();
+	}
+	
+	public static Pizza[] addPizzaToArray(Pizza[] pizzaArray, Pizza pizza){
+		Pizza[] tempPizzaArray = new Pizza[pizzaArray.length+1];
+		//Copy old array to the new array
+		for(int i=0; i<pizzaArray.length; i++){
+			tempPizzaArray[i] = pizzaArray[i];
+		}
+		//Add the pizza to the last position
+		tempPizzaArray[tempPizzaArray.length-1] = pizza;
+		
+		return tempPizzaArray;
 	}
 }
