@@ -6,11 +6,11 @@ package fr.pizzeria.model;
  *
  */
 public class Pizza {
-	public static int idCounter = 0;
-	public int id;
-	public String code;
-	public String wording;
-	public double price;
+	private static int idCounter = 0;
+	private int id;
+	private String code;
+	private String wording;
+	private double price;
 	
 	public Pizza(String code, String wording, double price){
 		this.id = idCounter;
@@ -27,4 +27,38 @@ public class Pizza {
 		this.wording = wording;
 		this.price = price;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public String getWording() {
+		return wording;
+	}
+
+	public void setWording(String wording) {
+		this.wording = wording;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	
+	
 }
