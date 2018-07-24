@@ -4,16 +4,17 @@ import java.util.Scanner;
 
 import fr.pizzeria.dao.PizzaArrayDao;
 import fr.pizzeria.model.Pizza;
+import fr.pizzeria.services.AddPizzaService;
+import fr.pizzeria.services.DeletePizzaService;
+import fr.pizzeria.services.ListPizzaService;
+import fr.pizzeria.services.UpdatePizzaService;
 
 public class PizzeriaAdminConsoleApp {
 	
 	public static void main(String[] args){
-		
 		int choiceNumber = 0;
 		Scanner questionUser = new Scanner(System.in);
 		PizzaArrayDao pizzaArray = new PizzaArrayDao();
-		String code, codePizza, wording;
-		double price;
 		
 		//Menu initialization
 		while(choiceNumber != 99){
@@ -29,58 +30,22 @@ public class PizzeriaAdminConsoleApp {
 			switch(choiceNumber){
 				//Case 1: Display all pizzas
 				case 1:
-					System.out.println("Pizzas");
-					System.out.println(pizzaArray.toString());
+					
+					//TESTER AVEC MENUSERVICE
+					ListPizzaService listPizza = new ListPizzaService();
+					listPizza.executeUC(questionUser, pizzaArray);
 					break;
-				//Case 2: Add a new pizza by code, wording and price
 				case 2:
-					System.out.println("Add a new pizza");	
-					
-					//Retrieve informations from user
-					System.out.println("Please enter the code :");
-					code = questionUser.next();
-					System.out.println("Please enter the wording :");
-					wording = questionUser.next();
-					System.out.println("Please enter the price :");
-					price = Double.parseDouble(questionUser.next());
-					
-					//Create the new pizza by informations
-					Pizza newPizza = new Pizza(code, wording, price);
-
-					//Add the new pizza
-					pizzaArray.saveNewPizza(newPizza);
+					AddPizzaService addPizza = new AddPizzaService();
+					addPizza.executeUC(questionUser, pizzaArray);
 					break;
 				case 3:
-					System.out.println("Update a pizza");
-					System.out.println(pizzaArray.toString());
-					
-					//Retrieve information from user
-					System.out.println("Please enter pizza code to update :");
-					codePizza = questionUser.next();
-					
-
-					//Retrieve informations from user
-					System.out.println("Please enter the new code :");
-					code = questionUser.next();
-					System.out.println("Please enter the new wording :");
-					wording = questionUser.next();
-					System.out.println("Please enter the new price :");
-					price = Double.parseDouble(questionUser.next());
-					
-					//Update the pizza
-					newPizza = new Pizza(code, wording, price);
-					pizzaArray.updatePizza(codePizza, newPizza);
+					UpdatePizzaService updatePizza = new UpdatePizzaService();
+					updatePizza.executeUC(questionUser, pizzaArray);
 					break;
-				case 4:
-					
-					System.out.println("Delete a pizza");
-					System.out.println(pizzaArray.toString());
-					
-					//Retrieve information from user
-					System.out.println("Please enter pizza code to delete :");
-					codePizza = questionUser.next();
-					
-					pizzaArray.deletePizza(codePizza);
+				case 4:	
+					DeletePizzaService deletePizza = new DeletePizzaService();
+					deletePizza.executeUC(questionUser, pizzaArray);
 					break;
 				case 99:
 					System.out.println("Bye ☹ ");
