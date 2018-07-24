@@ -57,6 +57,26 @@ public class PizzeriaAdminConsoleApp {
 					break;
 				case 3:
 					System.out.println("Update a pizza");
+					displayArray(pizzaArray);
+					System.out.println("Please enter pizza code to update :");
+					code = questionUser.next();
+					int indexToUpdate = 0;
+					//Looking for the pizza to update
+					for (int i=0; i<pizzaArray.length; i++){
+						if(code.equals(pizzaArray[i].code)){
+							indexToUpdate = i;
+						}
+					}
+					//Retrieve informations from user
+					System.out.println("Please enter the code :");
+					code = questionUser.next();
+					System.out.println("Please enter the wording :");
+					wording = questionUser.next();
+					System.out.println("Please enter the price :");
+					price = questionUser.nextDouble();
+					//Create the new pizza by informations
+					newPizza = new Pizza(code, wording, price);
+					pizzaArray[indexToUpdate] = newPizza;
 					break;
 				case 4:
 					System.out.println("Delete a pizza");
