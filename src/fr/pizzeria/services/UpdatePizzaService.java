@@ -3,12 +3,13 @@ package fr.pizzeria.services;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.IPizzaDao;
+import fr.pizzeria.exception.UpdatePizzaException;
 import fr.pizzeria.model.Pizza;
 
 public class UpdatePizzaService extends MenuService{
 
 	@Override
-	public void executeUC(Scanner questionUser, IPizzaDao pizzaList) {
+	public void executeUC(Scanner questionUser, IPizzaDao pizzaList) throws UpdatePizzaException{
 		String codePizza, code, wording;
 		double price;
 		Pizza newPizza;
@@ -20,7 +21,9 @@ public class UpdatePizzaService extends MenuService{
 		System.out.println("Please enter pizza code to update :");
 		codePizza = questionUser.next();
 		
-
+		if(!pizzaList.pizzaExists(codePizza)){
+			throw new UpdatePizzaException();
+		}
 		//Retrieve informations from user
 		System.out.println("Please enter the new code :");
 		code = questionUser.next();

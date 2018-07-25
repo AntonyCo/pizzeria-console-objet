@@ -5,6 +5,7 @@ import java.util.Scanner;
 import fr.pizzeria.dao.IPizzaDao;
 import fr.pizzeria.dao.PizzaMapDao;
 import fr.pizzeria.dao.PizzaMemDao;
+import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.services.MenuServiceFactory;
 
 public class PizzeriaAdminConsoleApp {
@@ -44,24 +45,10 @@ public class PizzeriaAdminConsoleApp {
 			
 			//Retrieve user choice
 			choiceNumber = questionUser.nextInt();
-			
-			switch(choiceNumber){
-				case 1:
-					MenuServiceFactory.getService(choiceNumber).executeUC(questionUser, pizzaList);
-					break;
-				case 2:
-					MenuServiceFactory.getService(choiceNumber).executeUC(questionUser, pizzaList);
-					break;
-				case 3:
-					MenuServiceFactory.getService(choiceNumber).executeUC(questionUser, pizzaList);
-					break;
-				case 4:	
-					MenuServiceFactory.getService(choiceNumber).executeUC(questionUser, pizzaList);
-					break;
-				case 99:
-					System.out.println("Bye ☹ ");
-					questionUser.close();
-					break;
+			try {
+				MenuServiceFactory.getService(choiceNumber).executeUC(questionUser, pizzaList);
+			} catch (StockageException e) {
+				e.printStackTrace();
 			}
 		}
 	}

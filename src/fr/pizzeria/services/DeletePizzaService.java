@@ -3,11 +3,12 @@ package fr.pizzeria.services;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.IPizzaDao;
+import fr.pizzeria.exception.DeletePizzaException;
 
 public class DeletePizzaService extends MenuService{
 
 	@Override
-	public void executeUC(Scanner questionUser, IPizzaDao pizzaList) {
+	public void executeUC(Scanner questionUser, IPizzaDao pizzaList) throws DeletePizzaException{
 		String codePizza;
 		
 		System.out.println("Delete a pizza");
@@ -18,6 +19,9 @@ public class DeletePizzaService extends MenuService{
 		codePizza = questionUser.next();
 		
 		//Delete the pizza
+		if(!pizzaList.pizzaExists(codePizza)){
+			throw new DeletePizzaException();
+		}
 		pizzaList.deletePizza(codePizza);
 	}
 
