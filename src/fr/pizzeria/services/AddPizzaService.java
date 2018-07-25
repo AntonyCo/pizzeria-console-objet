@@ -2,13 +2,13 @@ package fr.pizzeria.services;
 
 import java.util.Scanner;
 
-import fr.pizzeria.dao.PizzaMemDao;
+import fr.pizzeria.dao.IPizzaDao;
 import fr.pizzeria.model.Pizza;
 
 public class AddPizzaService extends MenuService{
 
 	@Override
-	public void executeUC(Scanner questionUser, PizzaMemDao pizzaList) {
+	public void executeUC(Scanner questionUser, IPizzaDao pizzaList) {
 		String code, wording;
 		double price;
 		

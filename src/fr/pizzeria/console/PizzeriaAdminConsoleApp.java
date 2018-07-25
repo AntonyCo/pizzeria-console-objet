@@ -2,6 +2,7 @@ package fr.pizzeria.console;
 
 import java.util.Scanner;
 
+import fr.pizzeria.dao.PizzaMapDao;
 import fr.pizzeria.dao.PizzaMemDao;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.services.AddPizzaService;
@@ -15,7 +16,8 @@ public class PizzeriaAdminConsoleApp {
 	public static void main(String[] args){
 		int choiceNumber = 0;
 		Scanner questionUser = new Scanner(System.in);
-		PizzaMemDao pizzaList = new PizzaMemDao();
+		//PizzaMemDao pizzaList = new PizzaMemDao();
+		PizzaMapDao pizzaList = new PizzaMapDao();
 		
 		while(choiceNumber != 99){
 			

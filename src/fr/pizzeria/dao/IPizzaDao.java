@@ -18,20 +18,20 @@ public interface IPizzaDao {
 	 List<Pizza> findAllPizzas();
 	 
 	 /**
-	  * Add a new pizza in parameter to local array.
+	  * Add a new pizza in parameter to local List.
 	  * @param pizza to add
 	  */
 	 void saveNewPizza(Pizza pizza);
 	 
 	 /**
-	  * Update the pizza selected by codePizza in the local array.
+	  * Update the pizza selected by codePizza in the local List.
 	  * @param codePizza code to find pizza to update
 	  * @param pizza new value off pizza
 	  */
 	 void updatePizza(String codePizza, Pizza pizza);
 	 
 	 /**
-	  * Delete the pizza selected by codePizza in the local array.
+	  * Delete the pizza selected by codePizza in the local List.
 	  * @param codePizza code to find pizza to delete
 	  */
 	 void deletePizza(String codePizza);
@@ -44,9 +44,9 @@ public interface IPizzaDao {
 	 Pizza findPizzaByCode(String codePizza);
 	 
 	 /**
-	  * Boolean to test if the pizza exist in the local array.
-	  * @param codePizza code to find the pizza in local array
-	  * @return true if the pizza exist in local array
+	  * Boolean to test if the pizza exist in the local List.
+	  * @param codePizza code to find the pizza in local List
+	  * @return true if the pizza exist in local List
 	  */
 	 boolean pizzaExists(String codePizza);
 }
