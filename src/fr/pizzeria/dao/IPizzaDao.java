@@ -2,6 +2,11 @@ package fr.pizzeria.dao;
 
 import fr.pizzeria.model.Pizza;
 
+/**
+ * This interface describe a container of {@link fr.pizzeria.model.Pizza}
+ * @author Antony
+ *
+ */
 public interface IPizzaDao {
 	
 	/**

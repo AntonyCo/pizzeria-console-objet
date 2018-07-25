@@ -78,6 +78,7 @@ public class PizzaArrayDao implements IPizzaDao{
 		}
 		return str;
 	}
+	
 	private void initializePizzaArray(){
 		//Add basics pizzas to array
 		pizzaArray = new Pizza[8];

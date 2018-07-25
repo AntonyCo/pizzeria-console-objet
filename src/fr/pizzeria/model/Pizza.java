@@ -2,7 +2,7 @@ package fr.pizzeria.model;
 
 /**
  * A pizza class which implement id, code, wording and price
- * @author formation
+ * @author Antony
  *
  */
 public class Pizza {
