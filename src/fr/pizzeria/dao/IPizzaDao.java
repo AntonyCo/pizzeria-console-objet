@@ -1,5 +1,7 @@
 package fr.pizzeria.dao;
 
+import java.util.List;
+
 import fr.pizzeria.model.Pizza;
 
 /**
@@ -11,9 +13,9 @@ public interface IPizzaDao {
 	
 	/**
 	 * 
-	 * @return an array of pizza
+	 * @return a List of pizza
 	 */
-	 Pizza[] findAllPizzas();
+	 List<Pizza> findAllPizzas();
 	 
 	 /**
 	  * Add a new pizza in parameter to local array.

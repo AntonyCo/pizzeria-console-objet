@@ -2,19 +2,19 @@ package fr.pizzeria.services;
 
 import java.util.Scanner;
 
-import fr.pizzeria.dao.PizzaArrayDao;
+import fr.pizzeria.dao.PizzaMemDao;
 import fr.pizzeria.model.Pizza;
 
 public class UpdatePizzaService extends MenuService{
 
 	@Override
-	public void executeUC(Scanner questionUser, PizzaArrayDao pizzaArray) {
+	public void executeUC(Scanner questionUser, PizzaMemDao pizzaList) {
 		String codePizza, code, wording;
 		double price;
 		Pizza newPizza;
 		
 		System.out.println("Update a pizza");
-		System.out.println(pizzaArray.toString());
+		System.out.println(pizzaList.toString());
 		
 		//Retrieve information from user
 		System.out.println("Please enter pizza code to update :");
@@ -31,7 +31,7 @@ public class UpdatePizzaService extends MenuService{
 		
 		//Update the pizza
 		newPizza = new Pizza(code, wording, price);
-		pizzaArray.updatePizza(codePizza, newPizza);
+		pizzaList.updatePizza(codePizza, newPizza);
 	}
 
 }

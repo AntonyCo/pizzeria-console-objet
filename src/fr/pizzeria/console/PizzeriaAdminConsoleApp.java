@@ -2,7 +2,7 @@ package fr.pizzeria.console;
 
 import java.util.Scanner;
 
-import fr.pizzeria.dao.PizzaArrayDao;
+import fr.pizzeria.dao.PizzaMemDao;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.services.AddPizzaService;
 import fr.pizzeria.services.DeletePizzaService;
@@ -15,7 +15,7 @@ public class PizzeriaAdminConsoleApp {
 	public static void main(String[] args){
 		int choiceNumber = 0;
 		Scanner questionUser = new Scanner(System.in);
-		PizzaArrayDao pizzaArray = new PizzaArrayDao();
+		PizzaMemDao pizzaList = new PizzaMemDao();
 		
 		while(choiceNumber != 99){
 			
@@ -32,16 +32,16 @@ public class PizzeriaAdminConsoleApp {
 			
 			switch(choiceNumber){
 				case 1:
-					MenuServiceFactory.getService(choiceNumber).executeUC(questionUser, pizzaArray);
+					MenuServiceFactory.getService(choiceNumber).executeUC(questionUser, pizzaList);
 					break;
 				case 2:
-					MenuServiceFactory.getService(choiceNumber).executeUC(questionUser, pizzaArray);
+					MenuServiceFactory.getService(choiceNumber).executeUC(questionUser, pizzaList);
 					break;
 				case 3:
-					MenuServiceFactory.getService(choiceNumber).executeUC(questionUser, pizzaArray);
+					MenuServiceFactory.getService(choiceNumber).executeUC(questionUser, pizzaList);
 					break;
 				case 4:	
-					MenuServiceFactory.getService(choiceNumber).executeUC(questionUser, pizzaArray);
+					MenuServiceFactory.getService(choiceNumber).executeUC(questionUser, pizzaList);
 					break;
 				case 99:
 					System.out.println("Bye ☹ ");
