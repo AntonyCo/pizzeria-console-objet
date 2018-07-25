@@ -27,6 +27,10 @@ public class MenuServiceFactory {
 			case 4:	
 				choice = new DeletePizzaService();
 				break;
+			case 99:
+				System.out.println("Bye ☹ ");
+				System.exit(-1);
+				break;
 		}
 		return choice;
 	}

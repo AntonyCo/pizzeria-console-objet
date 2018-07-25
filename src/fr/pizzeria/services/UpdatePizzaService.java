@@ -6,6 +6,11 @@ import fr.pizzeria.dao.IPizzaDao;
 import fr.pizzeria.exception.UpdatePizzaException;
 import fr.pizzeria.model.Pizza;
 
+/**
+ * 	Service layer to update a pizza
+ * @author Antony
+ *
+ */
 public class UpdatePizzaService extends MenuService{
 
 	@Override

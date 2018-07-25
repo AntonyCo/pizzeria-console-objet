@@ -7,7 +7,11 @@ import java.util.List;
 import java.util.Map;
 
 import fr.pizzeria.model.Pizza;
-
+/**
+ * Implement the container off {@link fr.pizzeria.model.Pizza} as a {@link java.util.HashMap}
+ * @author Antony
+ *
+ */
 public class PizzaMapDao implements IPizzaDao{
 	private Map<String, Pizza> pizzaMap;
 	

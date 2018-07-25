@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.pizzeria.model.Pizza;
-
+/**
+ *  Implement a container of {@link fr.pizzeria.model.Pizza} with a {@link java.util.ArrayList}
+ * @author Antony
+ *
+ */
 public class PizzaMemDao implements IPizzaDao{
 	private List<Pizza> pizzaList;
 	

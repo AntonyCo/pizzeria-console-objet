@@ -5,7 +5,11 @@ import java.util.Scanner;
 import fr.pizzeria.dao.IPizzaDao;
 import fr.pizzeria.exception.SavePizzaException;
 import fr.pizzeria.model.Pizza;
-
+/**
+ * Service layer to add a new Pizza
+ * @author Antony
+ *
+ */
 public class AddPizzaService extends MenuService{
 
 	@Override

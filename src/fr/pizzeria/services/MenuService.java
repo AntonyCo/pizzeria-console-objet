@@ -11,6 +11,7 @@ public abstract class MenuService {
 	 * 
 	 * @param questionUser is a Scanner to retrieve informations from user
 	 * @param pizzaList is a container of Pizza
+	 * @throws StockageException
 	 */	
 	public abstract void executeUC(Scanner questionUser, IPizzaDao pizzaList) throws StockageException;
 }

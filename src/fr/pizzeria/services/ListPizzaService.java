@@ -4,6 +4,11 @@ import java.util.Scanner;
 
 import fr.pizzeria.dao.IPizzaDao;
 
+/**
+ * Service layer to display pizzas
+ * @author Antony
+ *
+ */
 public class ListPizzaService extends MenuService{
 
 	@Override

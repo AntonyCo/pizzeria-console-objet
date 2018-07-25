@@ -5,6 +5,11 @@ import java.util.Scanner;
 import fr.pizzeria.dao.IPizzaDao;
 import fr.pizzeria.exception.DeletePizzaException;
 
+/**
+ *  Service layer to delete a pizza
+ * @author Antony
+ *
+ */
 public class DeletePizzaService extends MenuService{
 
 	@Override
