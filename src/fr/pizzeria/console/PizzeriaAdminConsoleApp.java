@@ -2,23 +2,36 @@ package fr.pizzeria.console;
 
 import java.util.Scanner;
 
+import fr.pizzeria.dao.IPizzaDao;
 import fr.pizzeria.dao.PizzaMapDao;
 import fr.pizzeria.dao.PizzaMemDao;
-import fr.pizzeria.model.Pizza;
-import fr.pizzeria.services.AddPizzaService;
-import fr.pizzeria.services.DeletePizzaService;
-import fr.pizzeria.services.ListPizzaService;
 import fr.pizzeria.services.MenuServiceFactory;
-import fr.pizzeria.services.UpdatePizzaService;
 
 public class PizzeriaAdminConsoleApp {
 	
 	public static void main(String[] args){
 		int choiceNumber = 0;
 		Scanner questionUser = new Scanner(System.in);
-		//PizzaMemDao pizzaList = new PizzaMemDao();
-		PizzaMapDao pizzaList = new PizzaMapDao();
+		IPizzaDao pizzaList = null;
 		
+		while(choiceNumber != 1 && choiceNumber != 2){
+			System.out.println("----- Which structure do you want to use ? -----");
+			System.out.println("1. List");
+			System.out.println("2. Map");
+			choiceNumber = questionUser.nextInt();
+			switch(choiceNumber){
+				case 1:
+					pizzaList = new PizzaMemDao();
+					break;
+				case 2:
+					pizzaList = new PizzaMapDao();
+					break;
+				default:
+					System.out.println("Please enter a correct value !\n");
+					break;
+			}
+		}
+
 		while(choiceNumber != 99){
 			
 			//Display menu
