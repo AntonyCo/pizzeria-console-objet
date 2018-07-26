@@ -3,9 +3,11 @@ package fr.pizzeria.services;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.IPizzaDao;
+import fr.pizzeria.exception.MinimumException;
 import fr.pizzeria.exception.SavePizzaException;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.model.PizzaType;
+import fr.pizzeria.utils.Validator;
 /**
  * Service layer to add a new Pizza
  * @author Antony
@@ -14,7 +16,7 @@ import fr.pizzeria.model.PizzaType;
 public class AddPizzaService extends MenuService{
 
 	@Override
-	public void executeUC(Scanner questionUser, IPizzaDao pizzaList) throws SavePizzaException{
+	public void executeUC(Scanner questionUser, IPizzaDao pizzaList) throws SavePizzaException, MinimumException{
 		String code, wording;
 		PizzaType pizzaType;
 		double price;
@@ -32,7 +34,7 @@ public class AddPizzaService extends MenuService{
 		
 		System.out.println("Please enter the wording :");
 		wording = questionUser.next();
-		System.out.println("Please enter the price :");
+		System.out.println("Please enter the price : (>5€)");
 		price = Double.parseDouble(questionUser.next());
 		
 		//Retrieve the type of pizza
@@ -48,6 +50,7 @@ public class AddPizzaService extends MenuService{
 		
 		//Create the new pizza by informations
 		Pizza newPizza = new Pizza(code, wording, price, pizzaType);
+		Validator.respectRules(newPizza);
 		pizzaList.saveNewPizza(newPizza);
 	}
 

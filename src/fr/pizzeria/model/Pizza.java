@@ -5,6 +5,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 import fr.pizzeria.utils.ToString;
+import fr.pizzeria.utils.Rule;
 import fr.pizzeria.utils.StringUtils;
 
 /**
@@ -20,6 +21,7 @@ public class Pizza {
 	@ToString(separator=" ")
 	public String wording;
 	@ToString(separator=" - ", isPrice=true)
+	@Rule(min=5)
 	public double price;
 	@ToString
 	public PizzaType pizzaType;
