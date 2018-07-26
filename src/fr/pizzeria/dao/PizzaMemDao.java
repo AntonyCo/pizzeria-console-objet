@@ -65,7 +65,7 @@ public class PizzaMemDao implements IPizzaDao{
 	public String toString(){
 		String str ="";
 		for(Pizza p : pizzaList){
-			str += p.getCode()+" -> "+p.getWording()+" ("+p.getPrice()+" €) - "+p.toString()+"\n";
+			str += p.toString()+"\n";
 		}
 		return str;
 	}

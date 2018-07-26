@@ -69,7 +69,7 @@ public class PizzaMapDao implements IPizzaDao{
 		Iterator<Pizza> valuesIte = pizzaMap.values().iterator();
 		while (valuesIte.hasNext()) {
 			Pizza p = valuesIte.next();
-			str += p.getCode()+" -> "+p.getWording()+" ("+p.getPrice()+" €) - "+p.toString()+"\n";
+			str +=p.toString()+"\n";
 		}
 		return str;
 	}

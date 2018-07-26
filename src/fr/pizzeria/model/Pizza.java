@@ -1,5 +1,12 @@
 package fr.pizzeria.model;
 
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+
+import fr.pizzeria.utils.ToString;
+import fr.pizzeria.utils.StringUtils;
+
 /**
  * A pizza class which implement id, code, wording and price
  * @author Antony
@@ -7,11 +14,15 @@ package fr.pizzeria.model;
  */
 public class Pizza {
 	private static int idCounter = 0;
-	private int id;
-	private String code;
-	private String wording;
-	private double price;
-	private PizzaType pizzaType;
+	public int id;
+	@ToString(separator=" -> ", uppercase=true)
+	public String code;
+	@ToString(separator=" ")
+	public String wording;
+	@ToString(separator=" - ", isPrice=true)
+	public double price;
+	@ToString
+	public PizzaType pizzaType;
 	
 	public Pizza(String code, String wording, double price, PizzaType pizzaType){
 		this.id = idCounter;
@@ -35,8 +46,7 @@ public class Pizza {
 	
 	@Override
 	public String toString(){
-		String str = pizzaType.getName();
-		return str;
+		return StringUtils.getStringFromAnnotationToString(this);
 	}
 
 	public int getId() {
