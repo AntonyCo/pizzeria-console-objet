@@ -11,21 +11,32 @@ public class Pizza {
 	private String code;
 	private String wording;
 	private double price;
+	private PizzaType pizzaType;
 	
-	public Pizza(String code, String wording, double price){
+	public Pizza(String code, String wording, double price, PizzaType pizzaType){
 		this.id = idCounter;
 		idCounter++;
 		
 		this.code = code;
 		this.wording = wording;
 		this.price = price;
+		
+		this.pizzaType = pizzaType;
 	}
 	
-	public Pizza(int id, String code, String wording, double price){
+	public Pizza(int id, String code, String wording, double price, PizzaType pizzaType){
 		this.id = id;
 		this.code = code;
 		this.wording = wording;
 		this.price = price;
+		
+		this.pizzaType = pizzaType;
+	}
+	
+	@Override
+	public String toString(){
+		String str = pizzaType.getName();
+		return str;
 	}
 
 	public int getId() {
@@ -58,6 +69,14 @@ public class Pizza {
 
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	public PizzaType getPizzaType() {
+		return pizzaType;
+	}
+
+	public void setPizzaType(PizzaType pizzaType) {
+		this.pizzaType = pizzaType;
 	}
 	
 	
