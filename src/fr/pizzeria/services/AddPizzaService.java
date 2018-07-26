@@ -50,6 +50,7 @@ public class AddPizzaService extends MenuService{
 		
 		//Create the new pizza by informations
 		Pizza newPizza = new Pizza(code, wording, price, pizzaType);
+		//Check the minimum price
 		Validator.respectRules(newPizza);
 		pizzaList.saveNewPizza(newPizza);
 	}

@@ -3,9 +3,11 @@ package fr.pizzeria.services;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.IPizzaDao;
+import fr.pizzeria.exception.MinimumException;
 import fr.pizzeria.exception.UpdatePizzaException;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.model.PizzaType;
+import fr.pizzeria.utils.Validator;
 
 /**
  * 	Service layer to update a pizza
@@ -15,7 +17,7 @@ import fr.pizzeria.model.PizzaType;
 public class UpdatePizzaService extends MenuService{
 
 	@Override
-	public void executeUC(Scanner questionUser, IPizzaDao pizzaList) throws UpdatePizzaException{
+	public void executeUC(Scanner questionUser, IPizzaDao pizzaList) throws UpdatePizzaException, MinimumException{
 		String codePizza, code, wording;
 		PizzaType pizzaType;
 		double price;
@@ -52,6 +54,8 @@ public class UpdatePizzaService extends MenuService{
 		
 		//Update the pizza
 		newPizza = new Pizza(code, wording, price, pizzaType);
+		//Check the minimum price
+		Validator.respectRules(newPizza);
 		pizzaList.updatePizza(codePizza, newPizza);
 	}
 
